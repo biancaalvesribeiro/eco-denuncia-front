@@ -18,8 +18,8 @@ function ComplaintsPage({
   setNovaEmpresa,
   novaCategoria,
   setNovaCategoria,
-  novoTexto,
-  setNovoTexto,
+  novaMensagem,
+  setNovaMensagem,
   onSaveComplaint,
   onGoToProfile,
   currentUserEmail
@@ -28,13 +28,11 @@ function ComplaintsPage({
   const [filterMode, setFilterMode] = useState("todas");
   const [statusFilter, setStatusFilter] = useState("todos");
 
-  // filtra minhas denúncias
   const listaBase =
     filterMode === "minhas"
       ? complaints.filter((c) => c.autorEmail === currentUserEmail)
       : complaints;
 
-  // filtra por status
   const listaFinal =
     statusFilter === "todos"
       ? listaBase
@@ -46,9 +44,7 @@ function ComplaintsPage({
   return (
     <div className="app-page">
 
-      {/* HEADER COM LOGO */}
       <header className="header">
-
         <div className="logo-startup">
           <div className="logo-icon">
             <svg viewBox="0 0 32 32">
@@ -58,7 +54,6 @@ function ComplaintsPage({
                   <stop offset="100%" stopColor="#00acc1" />
                 </linearGradient>
               </defs>
-
               <rect x="2" y="2" width="28" height="28" rx="10" fill="url(#ecoGradient)" />
               <path d="M10 20c0-5 5-9 11-9-1 4-3 8-7 10-2 1-4 0-4-1z" fill="#E8F5E9" />
               <circle cx="14" cy="13" r="1" fill="#E8F5E9" />
@@ -76,14 +71,12 @@ function ComplaintsPage({
         </button>
       </header>
 
-      {/* ÁREA PRINCIPAL */}
       <main className="content">
 
         <button className="btn-nova" onClick={openModal}>
           + Nova Denúncia
         </button>
 
-        {/* filtro minhas / todas */}
         <div className="filter-tabs filter-near-list">
           <button
             className={filterMode === "todas" ? "tab-button tab-button-active" : "tab-button"}
@@ -100,7 +93,6 @@ function ComplaintsPage({
           </button>
         </div>
 
-        {/* filtro status */}
         <div className="filter-tabs filter-near-list">
           <button
             className={statusFilter === "todos" ? "tab-button tab-button-active" : "tab-button"}
@@ -131,7 +123,6 @@ function ComplaintsPage({
           </button>
         </div>
 
-        {/* LISTA + DETALHE */}
         <div className="complaints-layout">
 
           <div className="complaints-list">
@@ -156,7 +147,6 @@ function ComplaintsPage({
 
         </div>
 
-        {/* MODAL */}
         {isModalOpen && (
           <NewComplaintModal
             onClose={closeModal}
@@ -167,8 +157,8 @@ function ComplaintsPage({
             setEmpresa={setNovaEmpresa}
             categoria={novaCategoria}
             setCategoria={setNovaCategoria}
-            texto={novoTexto}
-            setTexto={setNovoTexto}
+            texto={novaMensagem}
+            setTexto={setNovaMensagem}
           />
         )}
 
