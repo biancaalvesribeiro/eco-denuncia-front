@@ -302,8 +302,3 @@ function App() {
 }
 
 export default App;
-
-  return null;
-}
-
-export default App;
