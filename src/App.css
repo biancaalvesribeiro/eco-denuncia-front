@@ -1,0 +1,610 @@
+/* -------------------- Configurações gerais -------------------- */
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top left, #ecfdf3 0, #e5f7ef 40%, #f4f4f8 100%);
+  color: #111827;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* -------------------- Header -------------------- */
+
+.header {
+  width: 100%;
+  text-align: center;
+  padding: 40px 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #052e16;
+  letter-spacing: 0.02em;
+}
+
+.subtitle {
+  margin-top: 6px;
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+/* -------------------- Conteúdo principal -------------------- */
+
+.content {
+  width: 100%;
+  max-width: 900px;
+  padding: 0 24px 48px;
+  margin: 0 auto;
+}
+
+.content h2 {
+  text-align: center;
+  margin: 0 0 20px;
+  font-size: 1.25rem;
+  color: #111827;
+  font-weight: 700;
+}
+
+/* -------------------- Lista de denúncias -------------------- */
+
+.complaints-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Card individual da denúncia */
+.complaint-card {
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 22px;
+  padding: 18px 20px 16px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.complaint-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.12);
+  border-color: rgba(34, 197, 94, 0.3);
+}
+
+/* Título da denúncia */
+.complaint-title {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: #111827;
+}
+
+/* Informações adicionais */
+.complaint-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.empresa {
+  font-weight: 500;
+  color: #4b5563;
+}
+
+/* -------------------- Card de detalhes -------------------- */
+
+.detail-card {
+  margin-top: 24px;
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 24px;
+  padding: 20px 22px 18px;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+}
+
+.detail-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.05rem;
+  color: #022c22;
+  font-weight: 700;
+}
+
+.detail-title {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+.detail-meta {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin: 0 0 10px;
+}
+
+.detail-message {
+  font-size: 0.92rem;
+  color: #111827;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* -------------------- Telas principais -------------------- */
+
+.login-page,
+.app-page {
+  min-height: 100vh;
+  width: 100vw;
+  background: radial-gradient(circle at top left, #ecfdf3 0, #e5f7ef 40%, #f4f4f8 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-page {
+  justify-content: center;
+}
+
+/* -------------------- Cartão de login -------------------- */
+
+.login-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 420px;
+  padding: 0 16px 40px;
+  margin: 0 auto;
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 24px;
+  padding: 32px 32px 28px;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.16);
+  border: 1px solid rgba(34, 197, 94, 0.28);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login-card h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #052e16;
+}
+
+.login-hint {
+  margin: 0 0 8px;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+/* Inputs do login */
+.login-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+.login-input {
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  outline: none;
+  background: #f9fafb;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.08s ease;
+}
+
+.login-input:focus {
+  border-color: #16a34a;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18);
+  transform: translateY(-1px);
+}
+
+/* Erros de formulário */
+.login-error {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #b91c1c;
+}
+
+/* Botão principal do login */
+.login-button {
+  margin-top: 4px;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  color: #ffffff;
+  box-shadow: 0 14px 30px rgba(22, 163, 74, 0.45);
+}
+
+/* Link inferior */
+.login-footer {
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: #6b7280;
+  text-align: center;
+}
+
+/* -------------------- Responsividade -------------------- */
+
+@media (max-width: 600px) {
+  .login-content {
+    padding: 24px 16px 40px;
+  }
+
+  .login-card {
+    padding: 24px 20px 22px;
+    box-shadow: 0 16px 40px rgba(15, 23, 42, 0.18);
+  }
+
+  .content {
+    padding: 0 16px 36px;
+  }
+}
+
+/* -------------------- Botões e links gerais -------------------- */
+
+.link-button {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.88rem;
+  color: #16a34a;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.link-button:hover {
+  text-decoration: underline;
+}
+
+/* -------------------- Tabs de filtro -------------------- */
+
+.filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 18px;
+  justify-content: center;
+}
+
+.tab-button {
+  border: 1px solid #d1d5db;
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  background: rgba(255, 255, 255, 0.98);
+  cursor: pointer;
+  color: #374151;
+  transition: all 0.12s ease;
+}
+
+.tab-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.12);
+  border-color: rgba(34, 197, 94, 0.35);
+}
+
+.tab-button-active {
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  color: #ffffff;
+  border-color: #16a34a;
+  box-shadow: 0 12px 30px rgba(22, 163, 74, 0.5);
+}
+
+/* -------------------- Modal -------------------- */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 23, 42, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal {
+  background: rgba(255, 255, 255, 0.98);
+  padding: 24px;
+  border-radius: 22px;
+  box-shadow: 0 26px 60px rgba(15, 23, 42, 0.6);
+  max-width: 480px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid rgba(34, 197, 94, 0.32);
+}
+
+.modal-label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+.modal-input,
+.modal-textarea {
+  margin-top: 4px;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 0.9rem;
+  background: #f9fafb;
+  outline: none;
+  transition: 0.15s ease;
+}
+
+.modal-textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* -------------------- Botões do modal -------------------- */
+
+.btn-cancelar {
+  border: none;
+  background: #9ca3af;
+  color: #ffffff;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.btn-salvar {
+  border: none;
+  background: linear-gradient(135deg, #16a34a, #22c55e);
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* -------------------- Status -------------------- */
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.status-aberta {
+  background: rgba(248, 113, 113, 0.12);
+  color: #b91c1c;
+  border: 1px solid rgba(248, 113, 113, 0.7);
+}
+
+.status-em-analise {
+  background: rgba(250, 204, 21, 0.14);
+  color: #92400e;
+  border: 1px solid rgba(250, 204, 21, 0.8);
+}
+
+.status-respondida {
+  background: rgba(34, 197, 94, 0.12);
+  color: #166534;
+  border: 1px solid rgba(34, 197, 94, 0.8);
+}
+
+.status-fechada {
+  background: rgba(148, 163, 184, 0.14);
+  color: #475569;
+  border: 1px solid rgba(148, 163, 184, 0.85);
+}
+
+/* -------------------- Perfil -------------------- */
+
+.profile-card {
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 24px;
+  padding: 24px 24px 20px;
+  max-width: 540px;
+  width: 100%;
+  margin: 0 auto;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.16);
+  border: 1px solid rgba(34, 197, 94, 0.32);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.profile-actions {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+}
+
+/* -------------------- Layout com painel lateral -------------------- */
+
+.complaints-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 22px;
+  margin-top: 20px;
+  width: 100%;
+  min-height: 520px;
+}
+
+/* lista do painel esquerdo */
+.complaints-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-right: 4px;
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+.complaints-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.complaints-list::-webkit-scrollbar-thumb {
+  background: rgba(22, 163, 74, 0.35);
+  border-radius: 4px;
+}
+
+/* painel de detalhe à direita */
+.complaints-detail {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(14px) saturate(140%);
+  border-radius: 26px;
+  padding: 20px 24px;
+  border: 1px solid rgba(34, 197, 94, 0.22);
+  box-shadow: 0 24px 55px rgba(15, 23, 42, 0.12);
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+.complaints-detail::-webkit-scrollbar {
+  width: 6px;
+}
+
+.complaints-detail::-webkit-scrollbar-thumb {
+  background: rgba(22, 163, 74, 0.35);
+  border-radius: 4px;
+}
+
+/* placeholder quando nada está selecionado */
+.detail-placeholder {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+/* responsivo */
+@media (max-width: 820px) {
+  .complaints-layout {
+    display: block;
+  }
+
+  .complaints-detail {
+    margin-top: 22px;
+    max-height: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .complaints-detail {
+    padding: 18px 18px;
+  }
+}
+
+/* -------------------- Tabelas internas do detalhe -------------------- */
+
+.detail-meta-table {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 14px 0 18px;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.92rem;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.07);
+  padding-bottom: 6px;
+}
+
+.meta-row:last-child {
+  border-bottom: none;
+}
+
+.meta-label {
+  font-weight: 600;
+  color: #064e3b;
+}
+
+.meta-value {
+  font-weight: 500;
+  color: #1f2937;
+}
+
+/* -------------------- Caixas informativas -------------------- */
+
+.detail-info-box {
+  margin: 14px 0 18px;
+  padding: 14px 18px;
+  background: rgba(240, 253, 244, 0.6);
+  border: 1px solid rgba(22, 163, 74, 0.15);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #065f46;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.info-value {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.filter-near-list {
+  margin-top: 10px;
+  margin-bottom: 14px;
+}
