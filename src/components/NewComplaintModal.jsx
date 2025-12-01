@@ -27,10 +27,10 @@ function NewComplaintModal({
     <div className="modal-overlay">
       <div className="modal">
 
-        {/* Título do modal */}
+        {/* título */}
         <h3>Nova denúncia</h3>
 
-        {/* Campo: título da denúncia */}
+        {/* título da denúncia */}
         <label className="modal-label">
           Título
           <input
@@ -40,7 +40,7 @@ function NewComplaintModal({
           />
         </label>
 
-        {/* Campo: empresa */}
+        {/* empresa */}
         <label className="modal-label">
           Empresa
           <input
@@ -50,7 +50,7 @@ function NewComplaintModal({
           />
         </label>
 
-        {/* Campo: categoria */}
+        {/* categoria */}
         <label className="modal-label">
           Categoria
           <select
@@ -60,14 +60,14 @@ function NewComplaintModal({
           >
             <option value="" disabled hidden>Escolha…</option>
 
-            {/* Opções geradas a partir da lista CATEGORIAS */}
+            {/* aqui coloquei o value corretamente */}
             {CATEGORIAS.map((c) => (
-              <option key={c}>{c}</option>
+              <option key={c} value={c}>{c}</option>
             ))}
           </select>
         </label>
 
-        {/* Campo: descrição completa */}
+        {/* descrição */}
         <label className="modal-label">
           Descrição
           <textarea
@@ -77,7 +77,7 @@ function NewComplaintModal({
           />
         </label>
 
-        {/* Botões do modal */}
+        {/* botões */}
         <div className="modal-actions">
           <button className="btn-cancelar" onClick={onClose}>
             Cancelar
