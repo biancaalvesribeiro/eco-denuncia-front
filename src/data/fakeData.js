@@ -1,4 +1,7 @@
 // src/fakeData.js
+
+// Lista inicial de denúncias usadas apenas como dados fake no front
+// Agora cada denúncia já começa com um array de comentários vazio
 export const fakeComplaints = [
   {
     id: 1,
@@ -9,8 +12,10 @@ export const fakeComplaints = [
     dataAbertura: "2025-11-20",
     resumo: "Fui cobrada por uma compra que não reconheço...",
     mensagem:
-      "No dia 15/11 fui surpreendida com uma cobrança de R$ 350,00 no meu cartão de crédito que não reconheço. Já liguei no banco, abriram protocolo, mas nada foi resolvido até agora."
+      "No dia 15/11 fui surpreendida com uma cobrança de R$ 350,00 no meu cartão de crédito que não reconheço. Já liguei no banco, abriram protocolo, mas nada foi resolvido até agora.",
+    comentarios: [] // lista de comentários da denúncia
   },
+
   {
     id: 2,
     titulo: "Golpe em site falso de investimentos",
@@ -21,8 +26,10 @@ export const fakeComplaints = [
     resumo:
       "Acessei um site achando que era da corretora, depositei dinheiro e depois descobri que era falso...",
     mensagem:
-      "Recebi um link por WhatsApp com uma promoção de investimentos. A página parecia oficial, fiz cadastro e depositei R$ 2.000,00. Depois descobri que o site era falso e a empresa diz que não se responsabiliza."
+      "Recebi um link por WhatsApp com uma promoção de investimentos. A página parecia oficial, fiz cadastro e depositei R$ 2.000,00. Depois descobri que o site era falso e a empresa diz que não se responsabiliza.",
+    comentarios: []
   },
+
   {
     id: 3,
     titulo: "Conta digital bloqueada sem motivo",
@@ -32,6 +39,7 @@ export const fakeComplaints = [
     dataAbertura: "2025-11-10",
     resumo: "Minha conta foi bloqueada e fiquei dias sem acesso ao dinheiro...",
     mensagem:
-      "No dia 05/11 minha conta foi bloqueada sem qualquer aviso. Entrei em contato diversas vezes e só depois de registrar reclamação consegui retorno."
+      "No dia 05/11 minha conta foi bloqueada sem qualquer aviso. Entrei em contato diversas vezes e só depois de registrar reclamação consegui retorno.",
+    comentarios: []
   }
 ];
