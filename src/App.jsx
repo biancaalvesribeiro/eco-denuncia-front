@@ -11,11 +11,9 @@ import ComplaintsPage from "./pages/ComplaintsPage.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
 
 function App() {
-  /* ---------------------- Estados principais ---------------------- */
-  // aqui controlo qual tela aparece
-  const [screen, setScreen] = useState("login");
 
-  // controla se o usuário está logado ou não
+  /* ---------------------- Estados principais ---------------------- */
+  const [screen, setScreen] = useState("login");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   /* ---------------------- Login ---------------------- */
@@ -30,7 +28,7 @@ function App() {
   const [confirmSenha, setConfirmSenha] = useState("");
   const [erroCadastro, setErroCadastro] = useState("");
 
-  // dados extras que coloquei no cadastro
+  // dados extras
   const [idadeCadastro, setIdadeCadastro] = useState("");
   const [sexoCadastro, setSexoCadastro] = useState("");
 
@@ -40,11 +38,11 @@ function App() {
   const [erroCodigo, setErroCodigo] = useState("");
 
   /* ---------------------- Denúncias ---------------------- */
-  // começando com dados fake só pra funcionar o front
+  // começo com os dados fake
   const [complaints, setComplaints] = useState(fakeComplaints);
   const [selectedComplaint, setSelectedComplaint] = useState(null);
 
-  /* ---------------------- Modal de denúncia nova ---------------------- */
+  /* ---------------------- Modal nova denúncia ---------------------- */
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [novoTitulo, setNovoTitulo] = useState("");
   const [novaEmpresa, setNovaEmpresa] = useState("");
@@ -53,7 +51,6 @@ function App() {
 
   /* ---------------------- Logout ---------------------- */
   function handleLogout() {
-    // quando faz logout, volto tudo ao padrão
     setIsLoggedIn(false);
     setScreen("login");
 
@@ -67,6 +64,7 @@ function App() {
 
     setSelectedComplaint(null);
     setComplaints(fakeComplaints);
+
     setNovoTitulo("");
     setNovaEmpresa("");
     setNovaCategoria("");
@@ -91,13 +89,11 @@ function App() {
   function handleRegister(e) {
     e.preventDefault();
 
-    // validação básica
     if (!nomeCadastro || !emailCadastro || !senhaCadastro || !confirmSenha) {
       setErroCadastro("Preencha todos os campos para se cadastrar.");
       return;
     }
 
-    // validação simples de senha
     const senhaValida = /^(?=.*[A-Za-z])(?=.*\d).{8,}$/.test(senhaCadastro);
     if (!senhaValida) {
       setErroCadastro("A senha deve ter pelo menos 8 caracteres, com letras e números.");
@@ -111,7 +107,6 @@ function App() {
 
     setErroCadastro("");
 
-    // aqui gero um código aleatório pra tela de confirmação
     const newCode = String(Math.floor(100000 + Math.random() * 900000));
     setGeneratedCode(newCode);
 
@@ -137,16 +132,13 @@ function App() {
 
     setErroCodigo("");
 
-    // login automático após confirmar o código
     setIsLoggedIn(true);
     setScreen("app");
 
-    // passa o e-mail do cadastro para o login
     setEmail(emailCadastro);
     setSenha("");
   }
 
-  // botão de reenviar código
   function handleResendCode() {
     const newCode = String(Math.floor(100000 + Math.random() * 900000));
     setGeneratedCode(newCode);
@@ -156,15 +148,12 @@ function App() {
 
   /* ---------------------- Criar nova denúncia ---------------------- */
   function handleSaveComplaint() {
-    // aqui verifico se preencheu tudo mesmo
     if (!novoTitulo || !novaEmpresa || !novaCategoria || !novaMensagem) {
       alert("Preencha todos os campos da nova denúncia.");
       return;
     }
 
-    // *** CORREÇÃO IMPORTANTE ***
-    // no deploy o emailCadasto às vezes vem vazio,
-    // então uso sempre o email da pessoa logada
+    // email de quem está logado
     const emailUsuario = email;
 
     const nova = {
@@ -176,19 +165,41 @@ function App() {
       resumo: novaMensagem.substring(0, 80) + "...",
       status: "ABERTA",
       dataAbertura: new Date().toISOString(),
-      autorEmail: emailUsuario, // aqui fica certinho o dono da denúncia
+      autorEmail: emailUsuario,
+      comentarios: [] // adicionando lista vazia de comentários
     };
 
-    // adiciono a nova denúncia ao array
     setComplaints([...complaints, nova]);
     setSelectedComplaint(nova);
     setIsModalOpen(false);
 
-    // limpa campos do modal
     setNovoTitulo("");
     setNovaEmpresa("");
     setNovaCategoria("");
     setNovaMensagem("");
+  }
+
+  /* -------------- Função nova: adicionar comentário -------------- */
+  // aqui atualizo a denúncia certa, incluindo o novo comentário
+  function handleAddComentario(denunciaId, comentarioNovo) {
+    const novas = complaints.map((c) => {
+      if (c.id === denunciaId) {
+        return {
+          ...c,
+          comentarios: [...(c.comentarios || []), comentarioNovo]
+        };
+      }
+      return c;
+    });
+
+    setComplaints(novas);
+
+    // atualiza o detalhe selecionado também
+    if (selectedComplaint?.id === denunciaId) {
+      setSelectedComplaint(
+        novas.find((n) => n.id === denunciaId)
+      );
+    }
   }
 
   /* ---------------------- Telas sem login ---------------------- */
@@ -246,7 +257,7 @@ function App() {
     }
   }
 
-  /* ---------------------- Tela principal (app) ---------------------- */
+  /* ---------------------- Tela principal ---------------------- */
 
   if (isLoggedIn && screen === "app") {
     const currentUserEmail = email;
@@ -270,6 +281,7 @@ function App() {
         onSaveComplaint={handleSaveComplaint}
         onGoToProfile={() => setScreen("profile")}
         currentUserEmail={currentUserEmail}
+        onAddComentario={handleAddComentario} // envio função nova
       />
     );
   }
