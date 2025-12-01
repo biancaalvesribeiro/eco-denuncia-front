@@ -288,27 +288,45 @@ function App() {
 
   /* ---------------------- Tela de perfil ---------------------- */
 
-  if (isLoggedIn && screen === "profile") {
-    const nome = nomeCadastro || "Usuário EcoDenúncia";
-    const emailExibicao = email;
-    const currentUserEmail = email;
+if (isLoggedIn && screen === "profile") {
+  const nome = nomeCadastro || "Usuário EcoDenúncia";
+  const emailExibicao = email;
 
-    const totalDenuncias = complaints.filter(
-      (c) => c.autorEmail === currentUserEmail
-    ).length;
+  // data fictícia da conta: usei o dia do cadastro ou hoje
+  const dataCriacaoConta =
+    new Date().toLocaleDateString("pt-BR");
 
-    return (
-      <ProfilePage
-        nome={nome}
-        email={emailExibicao}
-        idade={idadeCadastro}
-        sexo={sexoCadastro}
-        totalDenuncias={totalDenuncias}
-        onBack={() => setScreen("app")}
-        onLogout={handleLogout}
-      />
-    );
-  }
+  // total de denúncias do usuário
+  const currentUserEmail = email;
+  const denunciasUsuario = complaints.filter(
+    (c) => c.autorEmail === currentUserEmail
+  );
+
+  const totalDenuncias = denunciasUsuario.length;
+
+  // pega a última denúncia (se existir)
+  const ultima = denunciasUsuario[denunciasUsuario.length - 1];
+
+  const ultimaDenuncia = ultima ? ultima.titulo : null;
+  const ultimaData = ultima
+    ? new Date(ultima.dataAbertura).toLocaleDateString("pt-BR")
+    : null;
+
+  return (
+    <ProfilePage
+      nome={nome}
+      email={emailExibicao}
+      idade={idadeCadastro}
+      sexo={sexoCadastro}
+      totalDenuncias={totalDenuncias}
+      ultimaDenuncia={ultimaDenuncia}
+      ultimaData={ultimaData}
+      dataCriacaoConta={dataCriacaoConta}
+      onBack={() => setScreen("app")}
+      onLogout={handleLogout}
+    />
+  );
+}
 
   return null;
 }
